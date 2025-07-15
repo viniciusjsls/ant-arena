@@ -1,7 +1,6 @@
 ﻿using Ant_3_Arena.Ants;
 using Ant_3_Arena.Constants;
 using Ant_3_Arena.Factories;
-using Ant_3_Arena.Strategies;
 using FluentAssertions;
 using System.Drawing;
 
@@ -12,19 +11,63 @@ namespace AntArena.Tests
         private readonly IAntFactory redFactory = new AntRedFactory();
         private readonly IAntFactory yellowFactory = new AntYellowFactory();
         private readonly IAntFactory blackFactory = new AntBlackFactory();
+        private readonly IAntFactory whiteFactory = new AntWhiteFactory();
 
         [Fact]
-        public void Ant_WhenCreating_ShouldMatchColor()
+        public void RedwAnt_WhenCreating_ShouldMatchColor()
         {
-            // Arrange / Act
-            var redAnt = redFactory.Create(new());
-            var yellowAnt = yellowFactory.Create(new());
-            var blackAnt = blackFactory.Create(new());
+            // Arrange
+            var factory = new AntRedFactory();
+
+            // Act
+            var ant = factory.Create(new());
 
             // Assert
-            yellowAnt.AntImage.GetPixel(yellowAnt.AntImage.Width / 2, yellowAnt.AntImage.Height / 2).Should().Be(ColorTranslator.FromHtml(ColorConstant.YELLOW));
-            redAnt.AntImage.GetPixel(redAnt.AntImage.Width / 2, redAnt.AntImage.Height / 2).Should().Be(ColorTranslator.FromHtml(ColorConstant.RED));
-            blackAnt.AntImage.GetPixel(yellowAnt.AntImage.Width / 2, blackAnt.AntImage.Height / 2).Should().Be(ColorTranslator.FromHtml(ColorConstant.BLACK));
+            AssertAnt(ant, ColorConstant.RED);
+        }
+
+        [Fact]
+        public void YellowAnt_WhenCreating_ShouldMatchColor()
+        {
+            // Arrange
+            var factory = new AntYellowFactory();
+
+            // Act
+            var ant = factory.Create(new());
+
+            // Assert
+            AssertAnt(ant, ColorConstant.YELLOW);
+        }
+
+        [Fact]
+        public void BlackAnt_WhenCreating_ShouldMatchColor()
+        {
+            // Arrange
+            var factory = new AntBlackFactory();
+
+            // Act
+            var ant = factory.Create(new());
+
+            // Assert
+            AssertAnt(ant, ColorConstant.BLACK);
+        }
+
+        [Fact]
+        public void WhiteAnt_WhenCreating_ShouldMatchColor()
+        {
+            // Arrange
+            var factory = new AntWhiteFactory();
+
+            // Act
+            var ant = factory.Create(new());
+
+            // Assert
+            AssertAnt(ant, ColorConstant.WHITE);
+        }
+
+        private void AssertAnt(Ant ant, string color)
+        {
+            ant.AntImage.GetPixel(ant.AntImage.Width / 2, ant.AntImage.Height / 2).Should().Be(ColorTranslator.FromHtml(color));
         }
     }
 }
