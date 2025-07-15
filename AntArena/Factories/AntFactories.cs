@@ -38,7 +38,7 @@ namespace Ant_3_Arena.Factories
     {
         public Ant Create(Size borders)
         {
-            return new Ant(borders, ColorConstant.BLACK, 2, 6, new DiagonalMovementStrategy(DiagonalDirectionEnum.RightUp));
+            return new Ant(borders, ColorConstant.BLACK, 2, 6, new DiagonalMovementStrategy(DiagonalDirectionEnum.RightUp, 500));
         }
     }
 }
