@@ -7,59 +7,64 @@ namespace Ant_3_Arena.Strategies
 {
     public class DiagonalMovementStrategy : BaseMovement, IMovementStrategy
     {
-        public DirectionEnum Move(Size borders, DirectionEnum direction, Position2D position, Velocity2D velocity)
+        public DiagonalDirectionEnum Direction { get; private set; }
+
+        public DiagonalMovementStrategy(DiagonalDirectionEnum direction)
         {
-            switch (direction)
+            Direction = direction;
+        }
+
+        public void Move(Size borders, Position2D position, Velocity2D velocity)
+        {
+            switch (Direction)
             {
-                case DirectionEnum.LeftUp:
+                case DiagonalDirectionEnum.LeftUp:
                     MoveLeft(position, velocity);
                     MoveUp(position, velocity);
 
                     if (position.X < 0 && position.Y < 0)
-                        return DirectionEnum.RightDown;
+                        Direction = DiagonalDirectionEnum.RightDown;
                     else if (position.X < 0)
-                        return DirectionEnum.RightUp;
+                        Direction = DiagonalDirectionEnum.RightUp;
                     else if (position.Y < 0)
-                        return DirectionEnum.LeftDown;
+                        Direction = DiagonalDirectionEnum.LeftDown;
                     break;
-                case DirectionEnum.LeftDown:
+                case DiagonalDirectionEnum.LeftDown:
                     MoveLeft(position, velocity);
                     MoveDown(position, velocity);
 
                     if (position.X < 0 && position.Y > borders.Height)
-                        return DirectionEnum.RightUp;
+                        Direction = DiagonalDirectionEnum.RightUp;
                     else if (position.X < 0)
-                        return DirectionEnum.RightDown;
+                        Direction = DiagonalDirectionEnum.RightDown;
                     else if (position.Y > borders.Height)
-                        return DirectionEnum.LeftUp;
+                        Direction = DiagonalDirectionEnum.LeftUp;
                     break;
-                case DirectionEnum.RightUp:
+                case DiagonalDirectionEnum.RightUp:
                     MoveRight(position, velocity);
                     MoveUp(position, velocity);
 
                     if (position.X > borders.Width && position.Y < 0)
-                        return DirectionEnum.LeftDown;
+                        Direction = DiagonalDirectionEnum.LeftDown;
                     else if (position.X > borders.Width)
-                        return DirectionEnum.LeftUp;
+                        Direction = DiagonalDirectionEnum.LeftUp;
                     else if (position.Y < 0)
-                        return DirectionEnum.RightDown;
+                        Direction = DiagonalDirectionEnum.RightDown;
                     break;
-                case DirectionEnum.RightDown:
+                case DiagonalDirectionEnum.RightDown:
                     MoveRight(position, velocity);
                     MoveDown(position, velocity);
 
                     if (position.X > borders.Width && position.Y > borders.Height)
-                        return DirectionEnum.LeftUp;
+                        Direction = DiagonalDirectionEnum.LeftUp;
                     else if (position.X > borders.Width)
-                        return DirectionEnum.LeftDown;
+                        Direction = DiagonalDirectionEnum.LeftDown;
                     else if (position.Y > borders.Height)
-                        return DirectionEnum.RightUp;
+                        Direction = DiagonalDirectionEnum.RightUp;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(direction));
+                    throw new ArgumentOutOfRangeException(nameof(Direction));
             }
-
-            return direction;
         }
     }
 }

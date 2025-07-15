@@ -7,6 +7,6 @@ namespace Ant_3_Arena.Strategies
 {
     public interface IMovementStrategy
     {
-        DirectionEnum Move(Size borders, DirectionEnum direction, Position2D position, Velocity2D velocity);
+        void Move(Size borders, Position2D position, Velocity2D velocity);
     }
 }

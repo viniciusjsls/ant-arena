@@ -16,74 +16,74 @@ public class DiagonalMovementTests
     private const int ZERO = 0;
 
     [Theory]
-    [InlineData(LOWER_THAN_ZERO, LOWER_THAN_ZERO, DirectionEnum.RightDown)]
-    [InlineData(LOWER_THAN_ZERO, ZERO, DirectionEnum.RightUp)]
-    [InlineData(ZERO, LOWER_THAN_ZERO, DirectionEnum.LeftDown)]
-    public void Move_WhenDirectionLeftUp_ShouldMoveToTarget(int x, int y, DirectionEnum target)
+    [InlineData(LOWER_THAN_ZERO, LOWER_THAN_ZERO, DiagonalDirectionEnum.RightDown)]
+    [InlineData(LOWER_THAN_ZERO, ZERO, DiagonalDirectionEnum.RightUp)]
+    [InlineData(ZERO, LOWER_THAN_ZERO, DiagonalDirectionEnum.LeftDown)]
+    public void Move_WhenDirectionLeftUp_ShouldMoveToTarget(int x, int y, DiagonalDirectionEnum target)
     {
         // Arrange
-        var strategy = new DiagonalMovementStrategy();
+        var strategy = new DiagonalMovementStrategy(DiagonalDirectionEnum.LeftUp);
         var position = new Position2D() { X = x, Y = y };
         var velocity = new Velocity2D();
 
         // Act
-        var response = strategy.Move(new(), DirectionEnum.LeftUp, position, velocity);
+        strategy.Move(new(), position, velocity);
 
         // Assert
-        response.Should().Be(target);
+        strategy.Direction.Should().Be(target);
     }
 
     [Theory]
-    [InlineData(LOWER_THAN_ZERO, BIGGERT_THAN_HEIGHT, DirectionEnum.RightUp)]
-    [InlineData(LOWER_THAN_ZERO, ZERO, DirectionEnum.RightDown)]
-    [InlineData(ZERO, BIGGERT_THAN_HEIGHT, DirectionEnum.LeftUp)]
-    public void Move_WhenDirectionLeftDown_ShouldMoveToTarget(int x, int y, DirectionEnum target)
+    [InlineData(LOWER_THAN_ZERO, BIGGERT_THAN_HEIGHT, DiagonalDirectionEnum.RightUp)]
+    [InlineData(LOWER_THAN_ZERO, ZERO, DiagonalDirectionEnum.RightDown)]
+    [InlineData(ZERO, BIGGERT_THAN_HEIGHT, DiagonalDirectionEnum.LeftUp)]
+    public void Move_WhenDirectionLeftDown_ShouldMoveToTarget(int x, int y, DiagonalDirectionEnum target)
     {
         // Arrange
-        var strategy = new DiagonalMovementStrategy();
+        var strategy = new DiagonalMovementStrategy(DiagonalDirectionEnum.LeftDown);
         var position = new Position2D() { X = x, Y = y };
         var velocity = new Velocity2D();
 
         // Act
-        var response = strategy.Move(new() { Height = HEIGHT }, DirectionEnum.LeftDown, position, velocity);
+        strategy.Move(new() { Height = HEIGHT }, position, velocity);
 
         // Assert
-        response.Should().Be(target);
+        strategy.Direction.Should().Be(target);
     }
 
     [Theory]
-    [InlineData(BIGGERT_THAN_WIDTH, LOWER_THAN_ZERO, DirectionEnum.LeftDown)]
-    [InlineData(BIGGERT_THAN_WIDTH, ZERO, DirectionEnum.LeftUp)]
-    [InlineData(ZERO, LOWER_THAN_ZERO, DirectionEnum.RightDown)]
-    public void Move_WhenDirectionRightUp_ShouldMoveToTarget(int x, int y, DirectionEnum target)
+    [InlineData(BIGGERT_THAN_WIDTH, LOWER_THAN_ZERO, DiagonalDirectionEnum.LeftDown)]
+    [InlineData(BIGGERT_THAN_WIDTH, ZERO, DiagonalDirectionEnum.LeftUp)]
+    [InlineData(ZERO, LOWER_THAN_ZERO, DiagonalDirectionEnum.RightDown)]
+    public void Move_WhenDirectionRightUp_ShouldMoveToTarget(int x, int y, DiagonalDirectionEnum target)
     {
         // Arrange
-        var strategy = new DiagonalMovementStrategy();
+        var strategy = new DiagonalMovementStrategy(DiagonalDirectionEnum.RightUp);
         var position = new Position2D() { X = x, Y = y };
         var velocity = new Velocity2D();
 
         // Act
-        var response = strategy.Move(new() { Width = WIDTH }, DirectionEnum.RightUp, position, velocity);
+        strategy.Move(new() { Width = WIDTH }, position, velocity);
 
         // Assert
-        response.Should().Be(target);
+        strategy.Direction.Should().Be(target);
     }
 
     [Theory]
-    [InlineData(BIGGERT_THAN_WIDTH, BIGGERT_THAN_HEIGHT, DirectionEnum.LeftUp)]
-    [InlineData(BIGGERT_THAN_WIDTH, ZERO, DirectionEnum.LeftDown)]
-    [InlineData(ZERO, BIGGERT_THAN_HEIGHT, DirectionEnum.RightUp)]
-    public void Move_WhenDirectionRightDown_ShouldMoveToTarget(int x, int y, DirectionEnum target)
+    [InlineData(BIGGERT_THAN_WIDTH, BIGGERT_THAN_HEIGHT, DiagonalDirectionEnum.LeftUp)]
+    [InlineData(BIGGERT_THAN_WIDTH, ZERO, DiagonalDirectionEnum.LeftDown)]
+    [InlineData(ZERO, BIGGERT_THAN_HEIGHT, DiagonalDirectionEnum.RightUp)]
+    public void Move_WhenDirectionRightDown_ShouldMoveToTarget(int x, int y, DiagonalDirectionEnum target)
     {
         // Arrange
-        var strategy = new DiagonalMovementStrategy();
+        var strategy = new DiagonalMovementStrategy(DiagonalDirectionEnum.RightDown);
         var position = new Position2D() { X = x, Y = y };
         var velocity = new Velocity2D();
 
         // Act
-        var response = strategy.Move(new() { Width = WIDTH, Height = HEIGHT }, DirectionEnum.RightDown, position, velocity);
+        strategy.Move(new() { Width = WIDTH, Height = HEIGHT }, position, velocity);
 
         // Assert
-        response.Should().Be(target);
+        strategy.Direction.Should().Be(target);
     }
 }

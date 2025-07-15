@@ -7,26 +7,23 @@ namespace Ant_3_Arena.Ants
 {
     public class Ant
     {
-        public DirectionEnum Direction { get; private set; }
         public Position2D Position { get; private set; }
         public Velocity2D Velocity { get; private set; }
 
         private readonly IMovementStrategy Movement;
 
         public Ant(
-            DirectionEnum direction,
             int horizontalVelocity,
             int verticalVelocity,
             IMovementStrategy movementStrategy)
         {
-            Direction = direction;
             Velocity = new Velocity2D() { HorizontalVelocity = horizontalVelocity, VerticalVelocity = verticalVelocity };
             Movement = movementStrategy;
         }
 
         public void Move(Size borders)
         {
-            Direction = Movement.Move(borders, Direction, Position, Velocity);
+            Movement.Move(borders, Position, Velocity);
         }
     }
 }

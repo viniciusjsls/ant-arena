@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ant_3_Arena.Enums
+﻿namespace Ant_3_Arena.Enums
 {
-    public enum DirectionEnum
+    public enum DiagonalDirectionEnum
     {
         LeftUp,
         RightUp,
