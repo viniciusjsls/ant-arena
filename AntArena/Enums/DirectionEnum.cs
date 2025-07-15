@@ -7,4 +7,12 @@
         LeftDown,
         RightDown
     }
+
+    public enum SquareDirectionEnum
+    {
+        Left,
+        Right,
+        Up,
+        Down
+    }
 }
