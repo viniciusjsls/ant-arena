@@ -2,6 +2,7 @@
 using Ant_3_Arena.Constants;
 using Ant_3_Arena.Enums;
 using Ant_3_Arena.Strategies;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -39,6 +40,16 @@ namespace Ant_3_Arena.Factories
         public Ant Create(Size borders)
         {
             return new Ant(borders, ColorConstant.BLACK, 2, 6, new DiagonalMovementStrategy(DiagonalDirectionEnum.RightUp, 500));
+        }
+    }
+
+    public class AntWhiteFactory : IAntFactory
+    {
+        public Ant Create(Size borders)
+        {
+            Random random = new Random();
+
+            return new Ant(borders, ColorConstant.WHITE, random.Next(5, 20), 5, new SquareMovementStrategy(SquareDirectionEnum.Left));
         }
     }
 }

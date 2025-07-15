@@ -19,14 +19,16 @@ namespace Ant_3_Arena
 			IAntFactory redFactory = new AntYellowFactory();
             IAntFactory yellowFactory = new AntRedFactory();
             IAntFactory blackFactory = new AntBlackFactory();
+            IAntFactory whiteFactory = new AntWhiteFactory();
 
-			var createdAnts = new List<Ant>();
+            var createdAnts = new List<Ant>();
 			
 			createdAnts.AddRange(redFactory.CreateMany(ClientSize, 3));
             createdAnts.AddRange(yellowFactory.CreateMany(ClientSize, 3));
             createdAnts.AddRange(blackFactory.CreateMany(ClientSize, 3));
+            createdAnts.AddRange(whiteFactory.CreateMany(ClientSize, 9));
 
-			Ants = createdAnts;
+            Ants = createdAnts;
         }
 
 		private void AntArena_Paint(object sender, PaintEventArgs e)

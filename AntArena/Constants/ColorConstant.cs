@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ant_3_Arena.Constants
+﻿namespace Ant_3_Arena.Constants
 {
     public static class ColorConstant
     {
         public const string YELLOW = "#FFFF00";
         public const string RED = "#FF0000";
         public const string BLACK = "#000000";
+        public const string WHITE = "#FFFFFF";
     }
 }
