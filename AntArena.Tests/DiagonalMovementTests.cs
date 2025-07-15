@@ -18,7 +18,7 @@ public class DiagonalMovementTests
     [InlineData(LOWER_THAN_ZERO, LOWER_THAN_ZERO, DirectionEnum.RightDown)]
     [InlineData(LOWER_THAN_ZERO, ZERO, DirectionEnum.RightUp)]
     [InlineData(ZERO, LOWER_THAN_ZERO, DirectionEnum.LeftDown)]
-    public void Move_WhenDirectionLeftUp_MoveToTarget(int x, int y, DirectionEnum target)
+    public void Move_WhenDirectionLeftUp_ShouldMoveToTarget(int x, int y, DirectionEnum target)
     {
         // Arrange
         var ant = new AntYellow(new());
@@ -36,7 +36,7 @@ public class DiagonalMovementTests
     [InlineData(LOWER_THAN_ZERO, BIGGERT_THAN_WIDTH, DirectionEnum.RightUp)]
     [InlineData(LOWER_THAN_ZERO, ZERO, DirectionEnum.RightDown)]
     [InlineData(BIGGER_THAN_ZERO, BIGGERT_THAN_WIDTH, DirectionEnum.LeftUp)]
-    public void Move_WhenDirectionLeftDown_MoveToTarget(int x, int y, DirectionEnum target)
+    public void Move_WhenDirectionLeftDown_ShouldMoveToTarget(int x, int y, DirectionEnum target)
     {
         // Arrange
         var ant = new AntYellow(new());
@@ -55,7 +55,7 @@ public class DiagonalMovementTests
     [InlineData(BIGGERT_THAN_WIDTH, LOWER_THAN_ZERO, DirectionEnum.LeftDown)]
     [InlineData(BIGGERT_THAN_WIDTH, BIGGER_THAN_ZERO, DirectionEnum.LeftUp)]
     [InlineData(ZERO, LOWER_THAN_ZERO, DirectionEnum.RightDown)]
-    public void Move_WhenDirectionRightUp_MoveToTarget(int x, int y, DirectionEnum target)
+    public void Move_WhenDirectionRightUp_ShouldMoveToTarget(int x, int y, DirectionEnum target)
     {
         // Arrange
         var ant = new AntYellow(new());
@@ -74,7 +74,7 @@ public class DiagonalMovementTests
     [InlineData(BIGGERT_THAN_WIDTH, BIGGERT_THAN_HEIGHT, DirectionEnum.LeftUp)]
     [InlineData(BIGGERT_THAN_WIDTH, ZERO, DirectionEnum.LeftDown)]
     [InlineData(ZERO, LOWER_THAN_ZERO, DirectionEnum.RightDown)]
-    public void Move_WhenDirectionRightDown_MoveToTarget(int x, int y, DirectionEnum target)
+    public void Move_WhenDirectionRightDown_ShouldMoveToTarget(int x, int y, DirectionEnum target)
     {
         // Arrange
         var ant = new AntYellow(new());
