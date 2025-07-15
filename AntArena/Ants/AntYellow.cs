@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ant_3_Arena.Enums;
+using System;
 using System.Drawing;
 
 namespace Ant_3_Arena.Ants
@@ -7,7 +8,7 @@ namespace Ant_3_Arena.Ants
 	{
 		public int X { get; set; }
 		public int Y { get; set; }
-		private string Direction { get; set; }
+		public DirectionEnum Direction { get; set; }
 		private int Verticalvelocity = 4;
 		private int Horizontalvelocity = 4;
 		private readonly string color = "#FFFF00";
@@ -17,7 +18,7 @@ namespace Ant_3_Arena.Ants
 
 		public AntYellow(Size borders)
 		{
-			Direction = "RightDown";
+			Direction = DirectionEnum.RightDown;
 			Color newColor = ColorTranslator.FromHtml(color);
 			Color white = ColorTranslator.FromHtml("#FFFFFF");
 
@@ -43,49 +44,49 @@ namespace Ant_3_Arena.Ants
 		public void Move(Size borders){
 			switch (Direction)
 			{
-				case "LeftUp":
+				case DirectionEnum.LeftUp:
 					X = X - Horizontalvelocity;
 					Y = Y - Verticalvelocity;
 
 					if (X < 0 && Y < 0)
-						Direction = "RightDown";
+						Direction = DirectionEnum.RightDown;
 					else if (X < 0)
-						Direction = "RightUp";
+						Direction = DirectionEnum.RightUp;
 					else if (Y < 0)
-						Direction = "LeftDown";
+						Direction = DirectionEnum.LeftDown;
 					break;
-				case "LeftDown":
+				case DirectionEnum.LeftDown:
 					X = X - Horizontalvelocity;
 					Y = Y + Verticalvelocity;
 
 					if (X < 0 && Y > borders.Height)
-						Direction = "RightUp";
+						Direction = DirectionEnum.RightUp;
 					else if (X < 0)
-						Direction = "RightDown";
+						Direction = DirectionEnum.RightDown;
 					else if (Y > borders.Height)
-						Direction = "LeftUp";
+						Direction = DirectionEnum.LeftUp;
 					break;
-				case "RightUp":
+				case DirectionEnum.RightUp:
 					X = X + Horizontalvelocity;
 					Y = Y - Verticalvelocity;
 
 					if (X > borders.Width && Y < 0)
-						Direction = "LeftDown";
+						Direction = DirectionEnum.LeftDown;
 					else if (X > borders.Width)
-						Direction = "LeftUp";
+						Direction = DirectionEnum.LeftUp;
 					else if (Y < 0)
-						Direction = "RightDown";
+						Direction = DirectionEnum.RightDown;
 					break;
-				case "RightDown":
+				case DirectionEnum.RightDown:
 					X = X + Horizontalvelocity;
 					Y = Y + Verticalvelocity;
 
 					if (X > borders.Width && Y > borders.Height)
-						Direction = "LeftUp";
+						Direction = DirectionEnum.LeftUp;
 					else if (X > borders.Width)
-						Direction = "LeftDown";
+						Direction = DirectionEnum.LeftDown;
 					else if (Y > borders.Height)
-						Direction = "RightUp";
+						Direction = DirectionEnum.RightUp;
 					break;
 			}
 		}
