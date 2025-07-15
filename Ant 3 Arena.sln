@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29728.190
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ant 3 Arena", "AntArena\Ant 3 Arena.csproj", "{C3AFD6E2-5200-4426-A7E3-55AE8B09A6D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntArena.Tests", "AntArena.Tests\AntArena.Tests.csproj", "{1343198E-CB73-08F8-1C88-47FA2E2DDDF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C3AFD6E2-5200-4426-A7E3-55AE8B09A6D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3AFD6E2-5200-4426-A7E3-55AE8B09A6D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3AFD6E2-5200-4426-A7E3-55AE8B09A6D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1343198E-CB73-08F8-1C88-47FA2E2DDDF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1343198E-CB73-08F8-1C88-47FA2E2DDDF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1343198E-CB73-08F8-1C88-47FA2E2DDDF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1343198E-CB73-08F8-1C88-47FA2E2DDDF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
